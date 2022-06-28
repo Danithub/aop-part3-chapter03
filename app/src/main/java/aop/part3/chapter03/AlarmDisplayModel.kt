@@ -6,12 +6,17 @@ data class AlarmDisplayModel(
     var onOff: Boolean
 ) {
 
+    val onOffText: String
+        get() {
+            return if(onOff)"알람 끄기" else "알람 켜기"
+        }
+
     val timeText: String
         get() {
-            val _hour = "%02d".format(if (hour < 12) hour else hour - 12)
-            val _min = "m".format(minute)
+            val h = "%02d".format(if (hour < 12) hour else hour - 12)
+            val m = "%02d".format(minute)
 
-            return "$_hour:$_min"
+            return "$h:$m"
         }
 
     val amPmText: String
